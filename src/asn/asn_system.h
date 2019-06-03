@@ -12,7 +12,9 @@
 #ifdef CRYPTOCONDITIONS_HAVE_CONFIG_H
 #include "cryptoconditions-config.h"
 #endif
-
+#ifndef _DEFAULT_SOURCE
+#define _DEFAULT_SOURCE
+#endif
 #ifndef _BSD_SOURCE
 #define _BSD_SOURCE /* for snprintf() on some linux systems  */
 #endif

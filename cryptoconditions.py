@@ -10,7 +10,7 @@ from ctypes import *
 
 
 so = cdll.LoadLibrary('.libs/libcryptoconditions.so')
-so.jsonRPC.restype = c_char_p
+so.cc_jsonRPC.restype = c_char_p
 
 
 def jsonRPC(method, params, load=True):
@@ -31,7 +31,7 @@ def get_help():
     methods = jsonRPC("listMethods", {})['methods']
 
     txt = USAGE + "\n\nmethods:\n"
-    
+
     for method in methods:
         txt += '    %s: %s\n' % (method['name'], method['description'])
 
@@ -50,10 +50,10 @@ def get_parser():
 
     json_loads = lambda r: json.loads(r)
     json_loads.__name__ = 'json'
-    
+
     parser.add_argument("method")
     parser.add_argument("request", type=json_loads)
-    
+
     return parser
 
 
